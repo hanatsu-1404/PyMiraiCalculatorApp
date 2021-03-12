@@ -1,3 +1,3 @@
-from UIModules import MainUI
+from Modules import MainUI
 
 app = MainUI()
