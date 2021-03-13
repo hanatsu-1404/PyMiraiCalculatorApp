@@ -18,11 +18,16 @@ def InvertShift(self):
     self.TextWid.focus_set()
 
 def CLRCmd(self):
-    self.TextWid.delete("1.0",END)
+    self.TextWid.delete("1.0",self.LineEnd)
     self.TextWid.focus_set()
 
 def EnterCmd(self):
-    pass
+    ExprText = self.TextWid.get("1.0",self.LineEnd)
+    self.EvalWolf(ExprText)
+    """AnsText =  "\n" + "Ans:" + self.EvalWolf(ExprText) + "\n"
+    self.TextWid.insert("1.0",AnsText)
+    self.Index = "1.0"
+    self.LineEnd = "1.0"""
 
 def InsCmd(self,StdText,ShiftText=None):
     InsText = StdText

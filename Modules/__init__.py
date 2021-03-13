@@ -20,6 +20,7 @@ class MainUI:
     from Modules.BtnCmdMethods._BtnCmdUtil import RetIndexRowAndColumn,CtrlIndex
     from Modules.BtnCmdMethods._BtnCmdUtil import RetRightMoveNum,RetLeftMoveNum
     from Modules.BtnDataClass import BtnData
+    from Modules._InvokeWolfram import EvalWolf
         
     def MainLoop(self):
         self.Root.mainloop()

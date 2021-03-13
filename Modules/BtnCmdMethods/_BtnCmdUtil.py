@@ -17,12 +17,10 @@ def RetRightMoveNum(self):
     ScannedIndex = "insert +1c"
     ScannedText = self.TextWid.get("insert",ScannedIndex)
     #getメソッドの引数は、インデックスが小さい方を先に渡さないといけない
+    CountBracket = 0
     if ScannedText == None or ScannedText == "\n":
         return 0
-    while(True):
-    #while(ScannedTest.isalpha())にしないのは、RetLeftMoveNumメソッドと見た目を揃えるため
-        if not (ScannedText.isalpha()):
-            break
+    while(ScannedText[-1].isalpha()):
         ScannedIndexNum += 1
         ScannedIndex = ScannedIndex.replace(str(ScannedIndexNum-1),str(ScannedIndexNum))
         ScannedText = self.TextWid.get("insert",ScannedIndex)
@@ -37,18 +35,22 @@ def RetLeftMoveNum(self):
     ScannedIndex = "insert -1c"
     ScannedText = self.TextWid.get(ScannedIndex,"insert")
     #getメソッドの引数は、インデックスが小さい方を先に渡さないといけない
+    DoWhile = False
+    CountBracket = 0
     if ScannedText == None or ScannedText == "\n":
         return 0
-    while(True):
-    #while(ScannedTest.isalpha())にしないのは、最後にScannedIndexNum+=1を実行したいから
+    while(ScannedText[0].isalpha() or (ScannedText[0] is '(')):
+        if len(ScannedText) < (ScannedIndexNum*(-1)):
+            break
+        if ScannedText[0] is '(':
+            CountBracket += 1
+        if CountBracket >= 2:
+            break
+        DoWhile = True
         ScannedIndexNum -= 1
         ScannedIndex = ScannedIndex.replace(str(ScannedIndexNum+1),str(ScannedIndexNum))
         ScannedText = self.TextWid.get(ScannedIndex,"insert")
         #getメソッドの引数は、インデックスが小さい方を先に渡さないといけない
-        if len(ScannedText) < (ScannedIndexNum*(-1)):#
-            ScannedIndexNum += 1
-            break
-        if not (ScannedText.isalpha()):
-            ScannedIndexNum += 1
-            break
+    if DoWhile is True:
+        ScannedIndexNum += 1
     return ScannedIndexNum
