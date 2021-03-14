@@ -20,6 +20,7 @@ def RetRightMoveNum(self):
     if ScannedText == None or ScannedText == "\n":
         return 0
     while(ScannedText[-1].isalpha()):
+        if ScannedText == 'e' or ScannedText == 'π':break
         ScannedIndexNum += 1
         ScannedIndex = ScannedIndex.replace(str(ScannedIndexNum-1),str(ScannedIndexNum))
         ScannedText = self.TextWid.get("insert",ScannedIndex)#getメソッドの引数は、Indexが小さい方を先に渡さないといけない
@@ -37,6 +38,7 @@ def RetLeftMoveNum(self):
     DoWhile = False     #while文が実行されていたら特別な処理を実行したいので、実行されたか確認するための変数
     CountParentheses = 0    #１個目の(は認識させたいが、2個目以降は認識させたくないので個数をカウントするための変数
     while(ScannedText[0].isalpha() or (ScannedText[0] == '(')):
+        if ScannedText == 'e' or ScannedText == 'π':break
         if len(ScannedText) < (ScannedIndexNum*(-1)):break      #Indexが先頭などにあり、それ以上左を参照できないと無限ループするのでその対策
         if ScannedText[0] == '(':CountParentheses += 1
         if CountParentheses >= 2:break

@@ -2,9 +2,9 @@ def CheckParenthesesNum(self,Expr):
     LeftParentheses = Expr.count('(')
     RightParentheses = Expr.count(')')
     if LeftParentheses != RightParentheses:
-        self.TextWid.insert("1.0","\nParentheses Error","error")
+        self.TextWid.insert("1.0","\nParentheses Error\n","error")
         self.TextWid.insert("1.0",Expr)
-        self.TextWid.mark_set(INSERT,"1.0")
+        self.TextWid.mark_set("insert","1.0")
         return False
     return True
 
@@ -16,9 +16,9 @@ def CheckOpeOrder(self,Expr):
         else:TextBuff = ""
         if TextBuff == "((":    TextBuff = ""
         if len(TextBuff) >= 2:
-            self.TextWid.insert("1.0","\nOperator Error","error")
+            self.TextWid.insert("1.0","\nOperator Error\n","error")
             self.TextWid.insert("1.0",Expr)
-            self.TextWid.mark_set(INSERT,"1.0")
+            self.TextWid.mark_set("insert","1.0")
             return False
     return True
 
