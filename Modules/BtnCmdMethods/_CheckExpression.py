@@ -9,7 +9,7 @@ def CheckParenthesesNum(self,Expr):
     return True
 
 def CheckOpeOrder(self,Expr):
-    AllOpe = ['+','-','*','/','^','(']
+    AllOpe = ['*','/','^','(']
     TextBuff = ""
     for ScannedChar in Expr:
         if ScannedChar in AllOpe:   TextBuff += ScannedChar
