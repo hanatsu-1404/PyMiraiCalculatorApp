@@ -15,16 +15,14 @@ def CtrlIndex(self,Index,MoveNum):
 def RetRightMoveNum(self):
     ScannedIndexNum = 1
     ScannedIndex = "insert +1c"
-    ScannedText = self.TextWid.get("insert",ScannedIndex)
-    #getメソッドの引数は、インデックスが小さい方を先に渡さないといけない
+    ScannedText = self.TextWid.get("insert",ScannedIndex)#getメソッドの引数は、Indexが小さい方を先に渡さないといけない
     CountBracket = 0
     if ScannedText == None or ScannedText == "\n":
         return 0
     while(ScannedText[-1].isalpha()):
         ScannedIndexNum += 1
         ScannedIndex = ScannedIndex.replace(str(ScannedIndexNum-1),str(ScannedIndexNum))
-        ScannedText = self.TextWid.get("insert",ScannedIndex)
-        #getメソッドの引数は、インデックスが小さい方を先に渡さないといけない
+        ScannedText = self.TextWid.get("insert",ScannedIndex)#getメソッドの引数は、Indexが小さい方を先に渡さないといけない
     return ScannedIndexNum
 
 """RetLeftMoveNumとRetRightMoveNumとでメソッドを分けてるのは良いコードが思いつかなかったのと
@@ -33,24 +31,19 @@ def RetRightMoveNum(self):
 def RetLeftMoveNum(self):
     ScannedIndexNum = -1
     ScannedIndex = "insert -1c"
-    ScannedText = self.TextWid.get(ScannedIndex,"insert")
-    #getメソッドの引数は、インデックスが小さい方を先に渡さないといけない
-    DoWhile = False
-    CountBracket = 0
+    ScannedText = self.TextWid.get(ScannedIndex,"insert")#getメソッドの引数は、Indexが小さい方を先に渡さないといけない
     if ScannedText == None or ScannedText == "\n":
         return 0
-    while(ScannedText[0].isalpha() or (ScannedText[0] is '(')):
-        if len(ScannedText) < (ScannedIndexNum*(-1)):
-            break
-        if ScannedText[0] is '(':
-            CountBracket += 1
-        if CountBracket >= 2:
-            break
+    DoWhile = False     #while文が実行されていたら特別な処理を実行したいので、実行されたか確認するための変数
+    CountParentheses = 0    #１個目の(は認識させたいが、2個目以降は認識させたくないので個数をカウントするための変数
+    while(ScannedText[0].isalpha() or (ScannedText[0] == '(')):
+        if len(ScannedText) < (ScannedIndexNum*(-1)):break      #Indexが先頭などにあり、それ以上左を参照できないと無限ループするのでその対策
+        if ScannedText[0] == '(':CountParentheses += 1
+        if CountParentheses >= 2:break
         DoWhile = True
         ScannedIndexNum -= 1
         ScannedIndex = ScannedIndex.replace(str(ScannedIndexNum+1),str(ScannedIndexNum))
-        ScannedText = self.TextWid.get(ScannedIndex,"insert")
-        #getメソッドの引数は、インデックスが小さい方を先に渡さないといけない
-    if DoWhile is True:
+        ScannedText = self.TextWid.get(ScannedIndex,"insert")#getメソッドの引数は、Indexが小さい方を先に渡さないといけない
+    if DoWhile is True:     
         ScannedIndexNum += 1
     return ScannedIndexNum

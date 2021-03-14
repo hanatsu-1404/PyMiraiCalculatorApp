@@ -23,6 +23,9 @@ def CLRCmd(self):
 
 def EnterCmd(self):
     ExprText = self.TextWid.get("1.0",self.LineEnd)
+    if self.CheckExprSyntax(ExprText) == False:
+        return 
+    ExprText = self.ReplaceExpr(ExprText)
     self.EvalWolf(ExprText)
     """AnsText =  "\n" + "Ans:" + self.EvalWolf(ExprText) + "\n"
     self.TextWid.insert("1.0",AnsText)

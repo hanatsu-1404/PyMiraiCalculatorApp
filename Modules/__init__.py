@@ -9,6 +9,7 @@ class MainUI:
         self.LineEnd = "1.0"
         self.ShiftBool = False
         self.SetEntry()
+        self.TextWid.tag_config("error",foreground="red")
         self.SetBtnData()
         self.SetBtn()
         self.MainLoop()
@@ -17,11 +18,12 @@ class MainUI:
     from Modules._SetBtnLayout import SetBtn
     from Modules._SetEntries import SetEntry
     from Modules._SettingBtnDatas import SetBtnData
-    from Modules.BtnCmdMethods._BtnCmdUtil import RetIndexRowAndColumn,CtrlIndex
-    from Modules.BtnCmdMethods._BtnCmdUtil import RetRightMoveNum,RetLeftMoveNum
+    from Modules.BtnCmdMethods._IndexRelation import RetIndexRowAndColumn,CtrlIndex,\
+                                                            RetRightMoveNum,RetLeftMoveNum
+    from Modules.BtnCmdMethods._CheckExpression import CheckExprSyntax,\
+                                                        CheckParenthesesNum,CheckOpeOrder
+    from Modules.BtnCmdMethods._InvokeWolfram import EvalWolf
+    from Modules.BtnCmdMethods._ReplaceExpression import ReplaceExpr,ReplaceBracket 
     from Modules.BtnDataClass import BtnData
-    from Modules._InvokeWolfram import EvalWolf
-        
     def MainLoop(self):
         self.Root.mainloop()
-
