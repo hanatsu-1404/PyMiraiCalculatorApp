@@ -32,7 +32,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Required Python related packages
         run: |
-          pacman -Sy --noconfirm --noprogressbar python{,-pip} tk gcc wolframclient
+          pacman -Sy --noconfirm --noprogressbar python{,-pip} tk gcc
           pip install poetry
           poetry config virtualenvs.in-project true
           poetry install
