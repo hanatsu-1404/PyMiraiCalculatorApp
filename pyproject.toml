@@ -11,9 +11,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-wolframclient = "^1.1.4"
 python = "^3.5.9"
-PyAutoGUI = "^0.9.52"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.6.0"
