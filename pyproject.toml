@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "pymirai"
+version = "0.0.1"
+authors = [
+    "Yui Tanabe <m19102@g.metro-cit.ac.jp>",
+]
+description = "PyMirai"
+
+packages = [
+    { include="src", from="."}
+]
+
+[tool.poetry.dependencies]
+wolframclient = "^1.1.4"
+python = "^3.5.9"
+PyAutoGUI = "^0.9.52"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.6.0"
+
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
