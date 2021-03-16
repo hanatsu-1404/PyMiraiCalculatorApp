@@ -13,6 +13,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.5.9"
 wolframclient = "^1.1.4"
+PyAutoGUI = "^0.9.52"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.6.0"
