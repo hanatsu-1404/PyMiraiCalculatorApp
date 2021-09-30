@@ -26,11 +26,12 @@ def EnterCmd(self):
     if self.CheckExprSyntax(ExprText) == False:
         return 
     ExprText = self.ReplaceExpr(ExprText)
-    self.EvalWolf(ExprText)
-    """AnsText =  "\n" + "Ans:" + self.EvalWolf(ExprText) + "\n"
+    AnsText =  "\n" + "Ans:" + self.EvalWolf(ExprText) + "\n"
     self.TextWid.insert("1.0",AnsText)
     self.Index = "1.0"
-    self.LineEnd = "1.0"""
+    self.LineEnd = "1.0"
+    self.TextWid.mark_set(INSERT,self.Index)
+    self.TextWid.focus_set()
 
 def InsCmd(self,StdText,ShiftText=None):
     InsText = StdText
