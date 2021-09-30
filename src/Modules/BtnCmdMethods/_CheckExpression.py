@@ -14,7 +14,8 @@ def CheckOpeOrder(self,Expr):
     for ScannedChar in Expr:
         if ScannedChar in AllOpe:   TextBuff += ScannedChar
         else:TextBuff = ""
-        if TextBuff == "((":    TextBuff = ""
+        if TextBuff == "((" or TextBuff == "^(":\
+            TextBuff = ""
         if len(TextBuff) >= 2:
             self.TextWid.insert("1.0","\nOperator Error\n","error")
             self.TextWid.insert("1.0",Expr)
