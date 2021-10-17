@@ -4,8 +4,8 @@ def SetBtn(self):
     self.BtnFrame = Frame(self.Root)
     self.BtnFrame.pack(side=RIGHT,expand=1,fill=BOTH)
     self.BtnLayout = [  "CLR" , "←"   , "→"   , "SHIFT"   ,
-                        "sinx", "cosx", "tanx", "DEL"     ,
-                        "√x"  , "x^2" , "x^y" , "log_a(x)",
+                        "sin", "cos", "tan", "DEL"     ,
+                        "n!"  , "^2"  , "^y"  , "ln"      ,
                         "π"   , "("   , ")"   , "+"       ,
                         "7"   , "8"   , "9"   , "-"       ,
                         "4"   , "5"   , "6"   , "*"       ,
